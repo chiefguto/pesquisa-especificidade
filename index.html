@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <title>Pesquisa Especificidade</title>
+</head>
+
+<body>
+  <div>
+    <header>
+      <h1><strong>Especificidade</strong></h1>
+      <section>
+        <h1>
+          <div id="menu-btn" onclick="toggleMenu()">&#9776; Menu</div>
+        </h1>
+      </section>
+    </header>
+  </div>
+
+  <nav id="menu">
+    <a href="#especificidade">O que é Especificidade?</a>
+    <a href="#tipos">Tipos de seletores</a>
+    <a href="#funciona">Como funciona?</a>
+    <a href="#exemplos">Exemplos</a>
+    <a href="#quadro">Quadro de Pontuações</a>
+  </nav>
+
+  <section id="especificidade">
+    <h2>O que é Especificidade?</h2>
+    <p>
+      A especificidade em CSS é um conceito crucial que determina quais regras CSS são aplicadas a elementos HTML quando
+      há conflitos ou sobreposições. É um sistema de "pesos" atribuídos a seletores CSS, que permite ao navegador
+      decidir qual regra deve ter precedência sobre outra. A compreensão da especificidade é fundamental para
+      desenvolvedores web, pois ajuda a controlar a aparência e o layout de uma página da web de maneira organizada e
+      previsível.<br>
+    <p></p>
+
+    A especificidade é calculada com base em quatro componentes principais: IDs, classes, pseudo-classes/atributos e
+    elementos. Cada um desses componentes contribui com um valor de peso à especificidade total de um seletor.
+    Especificamente, os IDs têm o maior peso, seguidos pelas classes, pseudo-classes/atributos e, por fim, elementos.
+    Por exemplo, um seletor com um ID tem uma especificidade maior do que um seletor com classes, e assim por
+    diante.<br>
+    <p></p>
+
+
+    Quando várias regras CSS se aplicam a um elemento HTML, o navegador usa a especificidade para determinar qual regra
+    prevalece. Regras com maior especificidade têm prioridade e substituem regras com menor especificidade. No entanto,
+    se uma regra contiver a declaração !important, ela terá a máxima prioridade, independentemente da
+    especificidade.<br>
+    <p></p>
+
+
+    A compreensão da especificidade é vital para evitar conflitos e garantir que o estilo seja aplicado conforme o
+    planejado. Desenvolvedores podem usar a especificidade de forma estratégica para controlar o design de uma página da
+    web, mas é importante usar essa ferramenta com moderação para manter o código CSS organizado e de fácil
+    manutenção.<br>
+    <p></p>
+
+
+    Em resumo, a especificidade em CSS é um mecanismo que determina a hierarquia de estilos quando várias regras se
+    aplicam a um elemento HTML. Ao entender como a especificidade funciona, os desenvolvedores podem criar estilos
+    coerentes e evitar conflitos indesejados, contribuindo para uma experiência de usuário consistente e eficaz na
+    web.<br>
+    </p>
+  </section>
+
+  <section id="tipos">
+    <h2>Tipos de Seletores</h2>
+    <p>
+    <ol>
+      <li>Seletor Universal (*):
+        <ul>
+          <li>O seletor universal, representado por um asterisco (*), corresponde a todos os elementos em um documento
+            HTML.</li>
+          <li>Ele é usado quando você deseja aplicar um estilo a todos os elementos na página.</li>
+          <li><strong>Exemplo :</strong> * { margin: 0; padding: 0; }</li>
+          <p></p>
+        </ul>
+      </li>
+
+
+      <li>Seletor de Elemento (ou Tipo):
+        <ul>
+          <li>Este é o tipo mais simples de seletor, correspondendo a elementos HTML com base em seus nomes.</li>
+          <li><strong>Exemplo :</strong> p { color: blue; } seleciona todos os parágrafos na página e define a cor do
+            texto como azul.
+          </li>
+          <p></p>
+        </ul>
+      </li>
+
+      <li>Seletor de Classe (.classe):
+        <ul>
+          <li>O seletor de classe é representado por um ponto (.) seguido do nome da classe.</li>
+          <li>Ele permite estilizar elementos que possuem a classe especificada no atributo class.
+          </li>
+          <li><strong>Exemplo :</strong> .destaque { font-weight: bold; }</li>
+          <p></p>
+        </ul>
+      </li>
+
+      <li>Seletor de ID (#id):
+        <ul>
+          <li>O seletor de ID é representado por uma cerquilha (#) seguida do nome do ID.</li>
+          <li>Ele é usado para estilizar um elemento específico com um ID correspondente.
+          </li>
+          <li><strong>Exemplo :</strong> #header { background-color: gray; }</li>
+          <p></p>
+        </ul>
+      </li>
+
+      <li>Seletor de Atributo ([atributo]):
+        <ul>
+          <li>O seletor de atributo seleciona elementos com base na presença de um atributo HTML específico.</li>
+          <li><strong>Exemplo :</strong> a[target] { text-decoration: underline; } seleciona todos os links <a> com o
+              atributo target.
+          </li>
+          <p></p>
+        </ul>
+      </li>
+
+      <li>Seletor de Pseudo-classe (:pseudo-classe):
+        <ul>
+          <li>As pseudo-classes selecionam elementos com base em estados ou interações do usuário.</li>
+          <li><strong>Exemplo :</strong> a:hover { color: red; } seleciona links quando o cursor do mouse está sobre
+            eles.
+          </li>
+          <p></p>
+        </ul>
+      </li>
+
+      <li>Seletor de Pseudo-elemento (::pseudo-elemento):
+        <ul>
+          <li>Os pseudo-elementos selecionam partes específicas de um elemento.</li>
+          <li><strong>Exemplo :</strong> p::first-line { font-style: italic; } seleciona a primeira linha de todos os
+            parágrafos e a torna itálica.
+          </li>
+          <p></p>
+        </ul>
+      </li>
+
+      <li>Seletores de Combinadores:
+        <ul>
+          <li>Estes combinam seletores para selecionar elementos com base em sua relação uns com os outros.</li>
+          <li><strong>Exemplos</strong> incluem o seletor de descendência (espaço), seletor de filho direto (>), seletor
+            de irmãos adjacentes (+) e seletor de irmãos gerais (~).
+          </li>
+          <p></p>
+        </ul>
+      </li>
+      </li>
+    </ol>
+    </p>
+  </section>
+
+  <section id="funciona">
+    <h2>Como Funciona?</h2>
+    <p>
+      A especificidade é um conceito fundamental no CSS que determina quais regras de estilo são aplicadas a elementos
+      HTML quando ocorrem conflitos. Em outras palavras, a especificidade é uma maneira de o navegador da web decidir
+      qual regra CSS deve prevalecer quando várias regras se aplicam ao mesmo elemento.<br>
+    <p></p>
+
+    A especificidade é um sistema de "pesos" atribuídos a seletores CSS, que define a prioridade de cada regra. Quanto
+    mais específico for um seletor, maior será seu peso, o que significa que ele terá mais prioridade na aplicação de
+    estilos. A compreensão da especificidade é essencial para desenvolvedores web, pois permite o controle preciso
+    sobre o design e a aparência de uma página.<br>
+    <p></p>
+
+    A especificidade é calculada com base em quatro componentes principais:<br>
+    <p></p>
+
+    <ol>
+      <li><strong>IDs :</strong> Os seletores com IDs têm a maior especificidade. Um seletor com um ID é representado por # seguido pelo
+        nome do ID. Por exemplo, #header tem alta especificidade.</li>
+      <p></p>
+
+      <li><strong>Classes, Pseudo-classes e Atributos :</strong> Os seletores que usam classes, pseudo-classes (como :hover) e
+      seletores de atributos têm especificidade intermediária. Um seletor de classe é representado por um ponto (.)
+      seguido pelo nome da classe, e um seletor de atributo é representado por [atributo=valor].</li><p></p>
+
+      <li><strong>Elementos :</strong> Os seletores que se baseiam apenas no tipo de elemento (por exemplo, p para parágrafos) têm uma especificidade menor em comparação com os IDs, classes e atributos.</li><p></p>
+
+      <li><strong>Seletor Universal (*) :</strong> O seletor universal (*) tem a menor especificidade. Ele corresponde a todos os elementos na página e é representado por um asterisco (*).</li><p></p> </ol>
+
+      <p>Ao calcular a especificidade, você atribui valores a cada componente do seletor e soma esses valores para obter a especificidade total de uma regra CSS. Por exemplo, o seletor #header .menu li a teria uma especificidade de 1.110 (ID = 1.000, Classes = 100, Elementos = 10). <br> <p></p>
+
+        Quando várias regras CSS se aplicam ao mesmo elemento, o navegador usa a especificidade para determinar qual regra tem prioridade. A regra com a maior especificidade será a que prevalece. No entanto, se uma regra contiver a declaração !important, ela terá prioridade máxima, independentemente da especificidade. <br> <p></p>
+        
+        Entender a especificidade é fundamental para evitar conflitos e garantir que as regras de estilo sejam aplicadas conforme o desejado. É uma ferramenta poderosa que permite aos desenvolvedores controlar o design de uma página da web de maneira organizada e previsível. A especificidade torna possível estilizar elementos específicos com precisão e criar interfaces web visualmente atraentes. <br> <p></p> </p>
+
+      
+        
+      
+  </section>
+
+  <section id="exemplos">
+    <h2>Exemplos</h2>
+    <hr>
+    <p><h3>Exemplo 1 </h3></p>
+    <p>Neste exemplo, usamos o elemento “p” como seletor e especificamos
+      uma cor vermelha para este elemento. O texto ficará vermelho:
+    </p>
+    <img src="./img/imgex1.png">
+    <p><hr></p>
+
+    <h3>Exemplo 2</h3>
+    <p>Neste exemplo, adicionamos um seletor de classe (chamado "teste") e
+      especificamos uma cor verde para esta classe. O texto agora será verde
+      (embora tenhamos especificado uma cor vermelha para o seletor de
+      elemento "p"). Isso ocorre porque o seletor de classe recebe maior
+      prioridade:</p>
+      <img src="./img/imgex2.png">
+      <p><hr></p>
+
+      <h3>Exemplo 3</h3>
+      <p>Neste exemplo, adicionamos o seletor de id (denominado "demo"). O
+        texto agora ficará azul, porque o seletor de id tem maior prioridade:</p>
+        <img src="./img/imgex3.png">
+        <p><hr></p>
+   
+  </section>
+
+  <section id="quadro">
+    <h2>Quadro de Pontuações</h2>
+    <table>
+      <tr>
+        <th></th>
+        <th>important</th>
+        <th>inline</th>
+        <th>id</th>
+        <th>class</th>
+        <th>seletor</th>
+        <th>especificidade</th>
+      </tr>
+      <tr>
+        <td><strong>body</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><strong>header</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><strong>nav</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><strong>nav a</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><strong>menu</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td><strong>nav a:hover</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><strong>section</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><strong>menu-btn</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td><strong>table, th, td</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><strong>quadro</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td><strong>td</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+    </table>
+
+  </section>
+
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
